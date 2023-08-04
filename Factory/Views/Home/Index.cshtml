@@ -8,7 +8,7 @@
 
 <h4>Meet our Engineers!</h4>
 
-@if (Model["engineers"].Length == 0)
+@* @if (Model["engineers"].Length == 0)
 {
   <p> there are none available at the moment!</p>
   <p>@Html.ActionLink("Add some Engineers to the team!", "Create", "Engineers")</p>
@@ -21,8 +21,10 @@ else
       <li>@Html.ActionLink(@eng.Name, "Details", "Engineers", new { id = @eng.EngineerId })</li>
     }
   </ul>
-}
+} *@
 
-
+<hr />
+<p>@Html.ActionLink("This is our list of our Machines", "Index", "Machines")</p>
 <p>@Html.ActionLink("This are a list of our Engineers", "Index", "Engineers")</p>
 <p>@Html.ActionLink("Add More Engineers", "Create", "Engineers")</p>
+<p>@Html.ActionLink("Add More Machines", "Create", "Machines")</p>
