@@ -1,0 +1,22 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Machine
+
+<h2>Edit Machine</h2>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.MachineId)
+
+  <label>This Machine is called the: </label>
+  @Html.EditorFor(model => model.Designation)
+  <br>
+  <input type="submit" value="Solved!">
+}
+
+<hr />
+<p>@Html.ActionLink("Back to Home", "Index", "Home")</p>
+<p>@Html.ActionLink("See all Machines", "Index")</p>
+<p>@Html.ActionLink("See all Engineers", "Index", "Engineers")</p>

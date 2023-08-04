@@ -1,0 +1,22 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Machine
+
+<h2>Install this Machine!</h2>
+
+<p>@Html.ValidationMessageFor(model => model.Designation, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+
+@using (Html.BeginForm())
+{
+  <label>This machine is the... </label>
+  @Html.TextBoxFor(model => model.Designation)
+  <br>
+  <input type="submit" value="Add to Factory">
+}
+
+<hr />
+<p>@Html.ActionLink("Back to Home", "Index", "Home")</p>
+<p>@Html.ActionLink("See all Machines", "Index")</p>
+<p>@Html.ActionLink("See all Engineers", "Index", "Engineers")</p>
