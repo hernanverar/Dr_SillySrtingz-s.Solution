@@ -1,4 +1,4 @@
-# Dr Sillystring-z Solution
+# Dr Sillystringz's Solution
 
 ## By Hernan Verar
 
