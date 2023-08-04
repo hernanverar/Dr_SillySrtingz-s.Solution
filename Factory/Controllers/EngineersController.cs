@@ -8,12 +8,49 @@ using System.Linq;
 namespace Factory.Controllers
 {
 
-    public class EngineerController : Controller
+    public class EngineersController : Controller
     {
       private readonly FactoryContext _db;
-      public EngineerController(FactoryContext db)
+      public EngineersController(FactoryContext db)
       {
         _db = db;
       }
+
+    public ActionResult Index()
+    {
+        return View(_db.Engineers.ToList());
     }
+    public ActionResult Create()
+    {
+      return View();
+    }
+
+    [HttpPost]
+    public ActionResult Create(Engineer engineer)
+    {
+      if (!ModelState.IsValid)
+      {
+        return View();
+      }
+      else
+      {
+      _db.Engineers.Add(engineer);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+      }
+    }
+    public ActionResult Edit(int id)
+    {
+      Engineer thisEngineer = _db.Engineers.FirstOrDefault(engineers => engineers.EngineerId == id);
+      return View(thisEngineer);
+    }
+
+    [HttpPost]
+    public ActionResult Edit(Engineer engineer)
+    {
+      _db.Engineers.Update(engineer);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+  }
 }
