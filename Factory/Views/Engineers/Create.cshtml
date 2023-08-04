@@ -1,0 +1,25 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Engineer
+
+<h2>Hire an Engineer!</h2>
+
+<p>@Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+
+@using (Html.BeginForm())
+{
+  <label><h4>Please Select an Engineer! </h4></label>
+  <hr/>
+
+  <label>Please enter an Engineer's Name in the box! </label>
+  @Html.TextBoxFor(model => model.Name)
+  <br>
+  <input type="submit" value="Hire this Engineer!">
+}
+
+<hr />
+<p>@Html.ActionLink("Back to Home", "Index", "Home")</p>
+<p>@Html.ActionLink("See all Engineers", "Index")</p>
+<p>@Html.ActionLink("See all Machines", "Index")</p>

@@ -1,0 +1,20 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Engineer
+
+<h2>Confirm Engineer Termination:</h2>
+
+@Html.DisplayNameFor(model => model.Name): <span> </span> @Html.DisplayFor(model => model.Name)
+
+@using (Html.BeginForm())
+{
+  <p>Please remove this Engineer from your file!</p>
+  <input type="submit" value="Agreed. Delete!" />
+}
+
+<hr />
+<p>@Html.ActionLink("Back to Home", "Index", "Home")</p>
+<p>@Html.ActionLink("Edit this Engineer", "Edit", new { id = Model.EngineerId})</p>
+<p>@Html.ActionLink("Back to Engineers", "Index")</p>
