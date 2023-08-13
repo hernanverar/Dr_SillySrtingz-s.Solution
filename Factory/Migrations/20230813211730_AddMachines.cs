@@ -9,6 +9,24 @@ namespace Factory.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.AlterDatabase()
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Engineers",
+                columns: table => new
+                {
+                    EngineerId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Engineers", x => x.EngineerId);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
             migrationBuilder.CreateTable(
                 name: "Machines",
                 columns: table => new
@@ -66,6 +84,9 @@ namespace Factory.Migrations
         {
             migrationBuilder.DropTable(
                 name: "EngineerMachines");
+
+            migrationBuilder.DropTable(
+                name: "Engineers");
 
             migrationBuilder.DropTable(
                 name: "Machines");

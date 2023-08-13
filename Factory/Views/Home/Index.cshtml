@@ -8,7 +8,7 @@
 
 <h4>Meet our Engineers!</h4>
 
-@* @if (Model["engineers"].Length == 0)
+@if (Model["engineers"].Length == 0)
 {
   <p> there are none available at the moment!</p>
   <p>@Html.ActionLink("Add some Engineers to the team!", "Create", "Engineers")</p>
@@ -16,12 +16,28 @@
 else
 {
   <ul>
-    @foreach (Engineer eng in Model["engineers"])
+    @foreach (Engineer engineer in Model["engineers"])
     {
-      <li>@Html.ActionLink(@eng.Name, "Details", "Engineers", new { id = @eng.EngineerId })</li>
+      <li>@Html.ActionLink(@engineer.Name, "Details", "Engineers", new { id = @engineer.EngineerId })</li>
     }
   </ul>
-} *@
+}
+
+<h4>This are our Machines!</h4>
+@if (Model["machines"].Length == 0)
+{
+  <p>Please find a certified Machinist.</p>
+  <p>@Html.ActionLink("Adding a Machine to the factory", "Create", "Machines")</p>
+}
+else
+{
+  <ul>
+    @foreach (Machine machine in Model["machines"])
+    {
+      <li>@Html.ActionLink(@machine.Designation, "Details", "Machines", new { id = @machine.MachineId })</li>
+    }
+  </ul>
+}
 
 <hr />
 <p>@Html.ActionLink("This is our list of our Machines", "Index", "Machines")</p>
